@@ -1,8 +1,7 @@
 package Cliente;
 
-public class Cliente {
+public class PessoaJuridica {
     String nome;
-    String cpf;
-    int idade;
+    String cnpj;
     Endereco enderecoCliente;
 }
