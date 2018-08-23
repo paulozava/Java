@@ -1,28 +1,30 @@
 package Conta;
 
+import Cliente.PessoaFisica;
+
 public class Conta {
 	private double saldo;
 	private int agencia;
 	private int conta;
-	String titular;
+	PessoaFisica titular;
 
 	public Conta() {
 	}
 
-	public Conta(String titularConta) {
-		this.titular = titularConta;
+	public Conta(String titular) {
+		this.titular = new PessoaFisica();
 	}
 
 	public double getSaldo() {
-		return saldo;
+		return this.saldo;
 	}
 
 	public int getAgencia() {
-		return agencia;
+		return this.agencia;
 	}
 
 	public int getConta() {
-		return conta;
+		return this.conta;
 	}
 
 	public boolean deposita(double valor) {

@@ -1,7 +1,6 @@
 package Cliente;
 
-public class PessoaJuridica {
-    String nome;
+public class PessoaJuridica extends Cliente{
     String cnpj;
     Endereco enderecoCliente;
 }
