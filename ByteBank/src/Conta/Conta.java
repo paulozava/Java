@@ -6,6 +6,13 @@ public class Conta {
 	int conta;
 	String titular;
 	
+	public Conta() {
+	}
+	
+	public Conta(String titularConta) {
+		this.titular = titularConta;
+	}
+	
 	public boolean deposita(double valor) {
 		this.saldo += valor;
 		return true;
@@ -15,9 +22,16 @@ public class Conta {
 		if (this.saldo >= valor) {
 			this.saldo -= valor;
 			return true;
-		} else {
-			return false;
 		}
+		return false;
+	}
+	
+	public boolean transfere(Conta beneficiario, double valor) {
+		Boolean deuCerto = this.saca(valor);
+		if (deuCerto) {
+			beneficiario.deposita(valor);
+		}
+		return deuCerto;
 	}
 
 }
