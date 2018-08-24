@@ -20,11 +20,11 @@ public class NumberValuation {
 		this.number = number;
 	}
 
-	public int getVerificationCode() {
+	private int getVerificationCode() {
 		return verificationCode;
 	}
 
-	public void setVerificationCode(int verificationCode) {
+	private void setVerificationCode(int verificationCode) {
 		this.verificationCode = verificationCode;
 	}
 
@@ -62,6 +62,18 @@ public class NumberValuation {
 		}
 		
 		return Integer.parseInt(toReturn);
+		
+	}
+	
+	public boolean validate() {
+		int number = this.getNumber();
+		int validate = this.getVerificationCode();
+		int digits = Integer.toString(number).length();
+		int calculatedNumber = calculateDigit(number, digits);
+		if (validate == calculatedNumber) {
+			return true;
+		}
+		return false;
 		
 	}
 }
