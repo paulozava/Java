@@ -49,16 +49,8 @@ public abstract class BasicAccount {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(int accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
 	public int getBankAgency() {
 		return bankAgency;
-	}
-
-	public void setBankAgency(int bankAgency) {
-		this.bankAgency = bankAgency;
 	}
 
 	public int getVerificationOfNumber() {
