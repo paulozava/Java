@@ -3,6 +3,7 @@ package Account;
 import BankingExeptions.NegativeValueException;
 import BankingExeptions.NotEnouthBalanceException;
 import Client.Client;
+import Milliceavous.NumberValuation;
 
 public abstract class BasicAccount {
 
@@ -11,9 +12,8 @@ public abstract class BasicAccount {
 	private int bankAgency;
 	private int verificationOfAgency;
 	private double balance;
-	Client client;
 
-	public boolean withdraw(double value) throws Exception {
+	protected boolean withdraw(double value) throws Exception {
 		if (value <= 0) {
 			throw new NegativeValueException();
 		} else if(this.getBalance() < value) {
@@ -23,7 +23,7 @@ public abstract class BasicAccount {
 		return true;
 	}
 	
-	public boolean deposit(double value) throws Exception {
+	protected boolean deposit(double value) throws Exception {
 		if (value <= 0) {
 			throw new NegativeValueException();
 		}
@@ -31,7 +31,7 @@ public abstract class BasicAccount {
 		return true;
 	}
 
-	public boolean transfer(double value, BasicAccount target) {
+	protected boolean transfer(double value, BasicAccount target) {
 		try {
 			this.withdraw(value);
 			target.deposit(value);
@@ -41,23 +41,43 @@ public abstract class BasicAccount {
 		return true;
 	}
 	
-	public double getBalance() {
+	protected double getBalance() {
 		return balance;
 	}
 
-	public int getAccountNumber() {
+	protected int getAccountNumber() {
 		return accountNumber;
 	}
 
-	public int getBankAgency() {
+	protected int getBankAgency() {
 		return bankAgency;
 	}
 
-	public int getVerificationOfNumber() {
+	protected int getVerificationOfNumber() {
 		return verificationOfNumber;
 	}
 
-	public int getVerificationOfAgency() {
+	protected int getVerificationOfAgency() {
 		return verificationOfAgency;
+	}
+
+	protected void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	protected void setVerificationOfNumber(int accountNumber) {
+		this.verificationOfNumber = new NumberValuation(accountNumber).generate();
+	}
+
+	protected void setBankAgency(int bankAgency) {
+		this.bankAgency = bankAgency;
+	}
+
+	protected void setVerificationOfAgency(int bankAgency) {
+		this.verificationOfAgency = new NumberValuation(bankAgency).generate();
+	}
+
+	protected void setBalance(double balance) {
+		this.balance = balance;
 	}
 }

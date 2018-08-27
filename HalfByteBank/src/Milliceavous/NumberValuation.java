@@ -12,11 +12,15 @@ public class NumberValuation {
 		this.setVerificationCode(verificationCode);
 	}
 
-	public int getNumber() {
+	public NumberValuation(int number) {
+		this.setNumber(number);
+	}
+	
+	private int getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	private void setNumber(int number) {
 		this.number = number;
 	}
 
@@ -59,6 +63,7 @@ public class NumberValuation {
 			calculatedDigit = Integer.toString(obtainADigit(numberString));
 			toReturn += calculatedDigit;
 			numberString += calculatedDigit;
+			acc++;
 		}
 		
 		return Integer.parseInt(toReturn);
@@ -74,6 +79,11 @@ public class NumberValuation {
 			return true;
 		}
 		return false;
-		
+	}
+	
+	public int generate() {
+		int number = this.getNumber();
+		int digits = this.calculateDigit(number, 2);
+		return digits;
 	}
 }
