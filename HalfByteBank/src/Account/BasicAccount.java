@@ -2,7 +2,6 @@ package Account;
 
 import BankingExeptions.NegativeValueException;
 import BankingExeptions.NotEnouthBalanceException;
-import Client.Client;
 import Milliceavous.NumberValuation;
 
 public abstract class BasicAccount {
@@ -13,7 +12,7 @@ public abstract class BasicAccount {
 	private int verificationOfAgency;
 	private double balance;
 
-	protected boolean withdraw(double value) throws Exception {
+	protected boolean withdraw(double value){
 		if (value <= 0) {
 			throw new NegativeValueException();
 		} else if(this.getBalance() < value) {
@@ -23,7 +22,7 @@ public abstract class BasicAccount {
 		return true;
 	}
 	
-	protected boolean deposit(double value) throws Exception {
+	protected boolean deposit(double value){
 		if (value <= 0) {
 			throw new NegativeValueException();
 		}
